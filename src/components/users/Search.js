@@ -12,6 +12,9 @@ class Search extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    if (this.state.search === "") {
+      return this.props.setAlert("Please enter something", "light");
+    }
     this.props.searchUsers(this.state.search);
     this.setState({
       search: "",
@@ -35,7 +38,7 @@ class Search extends Component {
             type="submit"
             value="Search"
             className="btn btn-dark btn-block"
-            disabled={this.isDisabled()}
+            // disabled={this.isDisabled()}
           />
         </form>
         {this.props.showClear && (
